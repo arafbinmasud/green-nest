@@ -1,0 +1,122 @@
+[
+  {
+    "plantId": 1,
+    "plantName": "Snake Plant",
+    "category": "Air Purifier",
+    "price": 18,
+    "rating": 4.8,
+    "availableStock": 10,
+    "careLevel": "Easy",
+    "description": "A hardy plant that purifies indoor air and thrives in low light.",
+    "image": "https://i.ibb.co.com/0yJwrmFg/snake-plant.webp",
+    "providerName": "UrbanGreen Studio"
+  },
+  {
+    "plantId": 2,
+    "plantName": "Aloe Vera",
+    "category": "Medicinal",
+    "price": 12,
+    "rating": 4.5,
+    "availableStock": 25,
+    "careLevel": "Easy",
+    "description": "A succulent plant species of the genus Aloe, known for its healing properties.",
+    "image": "https://i.ibb.co.com/2322XrhG/aloe-vera.webp",
+    "providerName": "Nature's Cure"
+  },
+  {
+    "plantId": 3,
+    "plantName": "Peace Lily",
+    "category": "Air Purifier",
+    "price": 22,
+    "rating": 4.7,
+    "availableStock": 15,
+    "careLevel": "Moderate",
+    "description": "Elegant white blooms that can filter indoor toxins effectively.",
+    "image": "https://i.ibb.co.com/qLCVH7xS/peace-lilly.webp",
+    "providerName": "Green Haven"
+  },
+  {
+    "plantId": 4,
+    "plantName": "Monstera Deliciosa",
+    "category": "Indoor Decor",
+    "price": 45,
+    "rating": 4.9,
+    "availableStock": 5,
+    "careLevel": "Moderate",
+    "description": "Famous for its natural leaf-holes, perfect for a tropical vibe.",
+    "image": "https://i.ibb.co.com/Q7ZhpY4X/monstera-deliciosa.webp",
+    "providerName": "UrbanGreen Studio"
+  },
+  {
+    "plantId": 5,
+    "plantName": "Spider Plant",
+    "category": "Air Purifier",
+    "price": 15,
+    "rating": 4.6,
+    "availableStock": 20,
+    "careLevel": "Easy",
+    "description": "Quick-growing plant with arching leaves that look great in hanging baskets.",
+    "image": "https://i.ibb.co.com/Xkbq3D4T/spider-plant.webp",
+    "providerName": "Leafy Living"
+  },
+  {
+    "plantId": 6,
+    "plantName": "Fiddle Leaf Fig",
+    "category": "Indoor Decor",
+    "price": 55,
+    "rating": 4.4,
+    "availableStock": 8,
+    "careLevel": "Hard",
+    "description": "Large, glossy leaves shaped like fiddles. Needs consistent care.",
+    "image": "https://i.ibb.co.com/chwS2TXG/Fiddle-Leaf-Fig.webp",
+    "providerName": "The Plant Hub"
+  },
+  {
+    "plantId": 7,
+    "plantName": "Jade Plant",
+    "category": "Succulent",
+    "price": 20,
+    "rating": 4.8,
+    "availableStock": 12,
+    "careLevel": "Easy",
+    "description": "Symbol of good luck with thick, fleshy leaves and a tree-like appearance.",
+    "image": "https://i.ibb.co.com/KcLZQFnp/Jade-Plant.webp",
+    "providerName": "Succulent World"
+  },
+  {
+    "plantId": 8,
+    "plantName": "Lavender",
+    "category": "Aromatic",
+    "price": 25,
+    "rating": 4.7,
+    "availableStock": 18,
+    "careLevel": "Moderate",
+    "description": "Beautiful purple flowers with a calming scent, perfect for relaxation.",
+    "image": "https://i.ibb.co.com/F4tRLMpN/lavender.webp",
+    "providerName": "Green Haven"
+  },
+  {
+    "plantId": 9,
+    "plantName": "Boston Fern",
+    "category": "Air Purifier",
+    "price": 19,
+    "rating": 4.5,
+    "availableStock": 14,
+    "careLevel": "Moderate",
+    "description": "Classic fern with feathery fronds, loves humid environments.",
+    "image": "https://i.ibb.co.com/sdN3KxyM/boston-fern.webp",
+    "providerName": "Leafy Living"
+  },
+  {
+    "plantId": 10,
+    "plantName": "Golden Pothos",
+    "category": "Indoor Decor",
+    "price": 14,
+    "rating": 4.9,
+    "availableStock": 30,
+    "careLevel": "Easy",
+    "description": "A versatile trailing plant that can grow almost anywhere.",
+    "image": "https://i.ibb.co.com/LXz5DrbL/golden-pathos.webp",
+    "providerName": "UrbanGreen Studio"
+  }
+]
