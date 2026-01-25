@@ -1,10 +1,12 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
+import { AuthContext } from "../provider/AuthContext";
+import userLogo from "../assets/user-logo.png";
 
 const links = (
   <>
     <li>
-      <NavLink>Home</NavLink>
+      <NavLink to="/">Home</NavLink>
     </li>
     <li>
       <NavLink>Plants</NavLink>
@@ -15,6 +17,19 @@ const links = (
   </>
 );
 const Navbar = () => {
+  const { user, logOutUser } = use(AuthContext);
+  console.log(user);
+
+  const handleSignOut = () => {
+    logOutUser()
+      .then(() => {
+        alert("LogOut successful!");
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
   return (
     <header>
       <div className="navbar bg-base-100 shadow-sm">
@@ -44,7 +59,10 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <Link to="/" className="font-bold text-primary text-2xl hidden md:block">
+          <Link
+            to="/"
+            className="font-bold text-primary text-2xl hidden md:block"
+          >
             🌿GreenNest🌿
           </Link>
         </div>
@@ -54,10 +72,43 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end">
-          <div className="flex gap-3">
-            <Link className="btn btn-primary">Login</Link>
-            <Link className="btn btn-primary">Register</Link>
-          </div>
+          {user ? (
+            <div className="flex items-center ">
+              <div className="w-10 h-10 rounded-full overflow-hidden">
+                <img
+                  className="w-full h-full object-cover"
+                  src={user?.photoURL || userLogo}
+                  alt="User"
+                />
+              </div>
+              <div className="dropdown dropdown-end">
+                <div tabIndex={0} role="button" className="btn border-0  m-1">
+                  ⬇️
+                </div>
+                <ul
+                  tabIndex="-1"
+                  className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+                >
+                  <li>
+                    <a>{user?.displayName}</a>
+                  </li>
+                  <hr className="text-accent" />
+                  <li>
+                   <button onClick={handleSignOut}>Logout</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          ) : (
+            <div className="flex gap-3">
+              <Link to="/auth/login" className="btn btn-primary">
+                Login
+              </Link>
+              <Link to="/auth/register" className="btn btn-primary">
+                Register
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </header>

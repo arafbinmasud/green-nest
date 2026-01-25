@@ -11,10 +11,15 @@
   default: true;
   --color-primary: #2D5A27;
   --color-secondary: #4CAF50;
-  --color-base-100: #FCFDFB;
+  --color-base-100: #F0FDF4;
   --color-accent: #706f6f;
 }
 
 * {
   font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: var(--color-base-100);
+  color: #1a1a1a; 
 }
