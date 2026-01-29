@@ -1,11 +1,14 @@
 import React, { use, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const {registerUser} = use(AuthContext);
+  const { registerUser, loginUserWithGoogle, setUser } = use(AuthContext);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -13,18 +16,51 @@ const Register = () => {
     const email = e.target.email.value;
     const photo = e.target.photo.value;
     const password = e.target.password.value;
-    console.log({name, email, photo, password});
+    const userInfo = { displayName: name, photoURL: photo };
+    console.log({ name, email, photo, password });
+    setError("");
+
+    const passwordValidation = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+    if (!passwordValidation.test(password)) {
+      setError(
+        "Your Password must have an Uppercase letter, a Lowercase letter and the Length must be at least 6 characters",
+      );
+      return;
+    }
     registerUser(email, password)
-    .then(res => {
+      .then((res) => {
+        const currentUser = res.user;
+        updateProfile(currentUser, userInfo)
+          .then(() => {
+            setUser({ ...currentUser, ...userInfo });
+            console.log(currentUser);
+            alert("Registration Successful");
+            navigate("/");
+          })
+          .catch((err) => {
+            setError(err.message);
+          });
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    loginUserWithGoogle()
+      .then((res) => {
         const user = res.user;
         console.log(user);
-        
-    })
-    .catch()
-    
+        alert("Login Successful!");
+        navigate("/");
+      })
+      .catch((err) => {
+        err.message;
+      });
   };
   return (
-    <div className="flex flex-1 items-center justify-center mt-5">
+    <div className="flex flex-1 items-center justify-center my-5">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <div className="card-body">
           <h2 className="font-bold text-2xl text-center mb-5">
@@ -82,11 +118,15 @@ const Register = () => {
                   )}
                 </button>
               </div>
+              <p className="text-red-500 font-semibold">{error}</p>
               <button className="btn btn-neutral mt-4">Register</button>
             </fieldset>
           </form>
           <p className="text-center">Or</p>
-          <button className="btn bg-white text-black border-[#e5e5e5]">
+          <button
+            onClick={handleGoogleLogin}
+            className="btn bg-white text-black border-[#e5e5e5]"
+          >
             <svg
               aria-label="Google logo"
               width="18"

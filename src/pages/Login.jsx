@@ -6,12 +6,13 @@ import { AuthContext } from "../provider/AuthContext";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { loginUser, loginUserWithGoogle } = use(AuthContext);
+  const [error, setError] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password);
+    setError("")
     loginUser(email, password)
       .then((res) => {
         const user = res.user;
@@ -20,7 +21,7 @@ const Login = () => {
         e.target.reset();
       })
       .catch((err) => {
-        console.log(err.message);
+        setError(err.message);
       });
   };
 
@@ -29,9 +30,10 @@ const Login = () => {
       .then((res) => {
         const user = res.user;
         console.log(user);
+        alert('Login Successful!')
       })
       .catch((err) => {
-        console.log(err.message);
+        (err.message);
       });
   };
   return (
@@ -75,6 +77,8 @@ const Login = () => {
                   )}
                 </button>
               </div>
+
+              <p className="text-red-500 text-sm">{error}</p>
 
               <div>
                 <a className="link link-hover">Forgot password?</a>
