@@ -5,6 +5,8 @@ import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import MyProfile from "../pages/MyProfile";
+import PrivateRoute from "../provider/PrivateRoute";
+import UpdateProfile from "../pages/UpdateProfile";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/plants",
         element: <p>Plants</p>
+      },
+      {
+        path: "/update-profile",
+        element: <PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
       }
     ],
   },

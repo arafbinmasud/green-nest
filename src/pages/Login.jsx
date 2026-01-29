@@ -43,7 +43,7 @@ const Login = () => {
       });
   };
   return (
-    <div className="flex flex-1 items-center justify-center my-5">
+    <div className="flex flex-1 items-center justify-center m-5">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <div className="card-body">
           <h2 className="font-bold text-2xl text-center mb-5">
@@ -89,7 +89,7 @@ const Login = () => {
               <div>
                 <a className="link link-hover">Forgot password?</a>
               </div>
-              <button className="btn btn-neutral mt-4">Login</button>
+              <button className="btn btn-primary mt-4">Login</button>
             </fieldset>
           </form>
           <p className="text-center">Or</p>
