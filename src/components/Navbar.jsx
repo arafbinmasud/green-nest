@@ -9,10 +9,10 @@ const links = (
       <NavLink to="/">Home</NavLink>
     </li>
     <li>
-      <NavLink>Plants</NavLink>
+      <NavLink to="/plants">Plants</NavLink>
     </li>
     <li>
-      <NavLink>My Profile</NavLink>
+      <NavLink to="/my-profile">My Profile</NavLink>
     </li>
   </>
 );
@@ -77,7 +77,7 @@ const Navbar = () => {
               <div className="w-10 h-10 rounded-full overflow-hidden">
                 <img
                   className="w-full h-full object-cover"
-                  src={user?.photoURL || userLogo}
+                  src={user.photoURL || userLogo}
                   alt="User"
                 />
               </div>

@@ -1,12 +1,15 @@
 import { use, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { loginUser, loginUserWithGoogle } = use(AuthContext);
   const [error, setError] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -19,6 +22,8 @@ const Login = () => {
         console.log(user);
         alert("successful login!");
         e.target.reset();
+        navigate(`${location.state? location.state : "/"}`)
+
       })
       .catch((err) => {
         setError(err.message);
@@ -30,7 +35,8 @@ const Login = () => {
       .then((res) => {
         const user = res.user;
         console.log(user);
-        alert('Login Successful!')
+        navigate(`${location.state? location.state : "/"}`)
+        
       })
       .catch((err) => {
         (err.message);
