@@ -3,6 +3,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
 import { updateProfile } from "firebase/auth";
+import { auth } from "../firebase/firebase.config";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -33,7 +34,7 @@ const Register = () => {
         const currentUser = res.user;
         updateProfile(currentUser, userInfo)
           .then(() => {
-            setUser({ ...currentUser, ...userInfo });
+            setUser({...auth.currentUser });
             console.log(currentUser);
             alert("Registration Successful");
             navigate("/");

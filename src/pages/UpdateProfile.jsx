@@ -1,7 +1,9 @@
 import  { use } from "react";
 import { AuthContext } from "../provider/AuthContext";
 import { updateProfile } from "firebase/auth";
-import { Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
+import { auth } from "../firebase/firebase.config";
+
 
 const UpdateProfile = () => {
   const { user, setUser } = use(AuthContext);
@@ -13,9 +15,9 @@ const UpdateProfile = () => {
         const photo = e.target.photo.value;
         const userInfo = {displayName: name, photoURL: photo};
         console.log( user, userInfo);
-        updateProfile(user, userInfo)
+        updateProfile(auth.currentUser, userInfo)
         .then(()=>{
-            setUser({...user, ...userInfo});
+            setUser({...auth.currentUser});
             navigate("/my-profile")
         })
         .catch(err => {
@@ -39,6 +41,7 @@ const UpdateProfile = () => {
                 name="name"
                 placeholder={user.displayName}
                 required
+                
               />
 
               {/* Photo URL  */}
@@ -48,7 +51,7 @@ const UpdateProfile = () => {
                 className="input"
                 name="photo"
                 placeholder={user.photoURL}
-                required
+               
               />
               <button className="btn btn-primary mt-4">Update</button>
             </fieldset>
