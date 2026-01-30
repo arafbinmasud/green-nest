@@ -1,9 +1,17 @@
-import React from 'react'
+import Hero from "../components/Hero";
 
 const HomePage = () => {
   return (
-    <div>HomePage</div>
-  )
-}
+    <>
+      <section className="hero-section">
+        <Hero></Hero>
+      </section>
 
-export default HomePage
+      <section className="card-section">
+
+      </section>
+    </>
+  );
+};
+
+export default HomePage;

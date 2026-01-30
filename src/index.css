@@ -27,3 +27,10 @@ body {
 a.active {
   text-decoration: underline;
 }
+
+
+@media (max-width: 640px) {
+  .swiper-button-next, .swiper-button-prev {
+    display: none !important;
+  }
+}
