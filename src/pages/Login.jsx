@@ -1,29 +1,27 @@
-import { use, useState } from "react";
+import { use, useRef, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { loginUser, loginUserWithGoogle } = use(AuthContext);
+  const { loginUser, loginUserWithGoogle, resetPassword } = use(AuthContext);
   const [error, setError] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
-  
+  const emailRef = useRef();
 
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    setError("")
+    setError("");
     loginUser(email, password)
       .then((res) => {
         const user = res.user;
         console.log(user);
-        alert("successful login!");
-        e.target.reset();
-        navigate(`${location.state? location.state : "/"}`)
-
+      
+        navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((err) => {
         setError(err.message);
@@ -35,11 +33,29 @@ const Login = () => {
       .then((res) => {
         const user = res.user;
         console.log(user);
-        navigate(`${location.state? location.state : "/"}`)
-        
+        navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((err) => {
-        (err.message);
+        err.message;
+      });
+  };
+
+  const handleForgotPass = () => {
+    const email = emailRef.current.value;
+    setError("");
+    if (!email) {
+      setError("Please Provide a Valid Email!!");
+      return;
+    }
+
+    resetPassword(email)
+      .then(() => {
+        alert("Password reset email sent! Check your inbox.");
+        //  Gmail redirect
+        window.open("https://mail.google.com", "_blank");
+      })
+      .catch((err) => {
+        setError(err.message);
       });
   };
   return (
@@ -56,6 +72,7 @@ const Login = () => {
               <input
                 name="email"
                 type="email"
+                ref={emailRef}
                 className="input"
                 placeholder="Email"
                 required
@@ -87,7 +104,13 @@ const Login = () => {
               <p className="text-red-500 text-sm">{error}</p>
 
               <div>
-                <a className="link link-hover">Forgot password?</a>
+                <button
+                  type="button"
+                  onClick={handleForgotPass}
+                  className="link link-hover"
+                >
+                  Forgot password?
+                </button>
               </div>
               <button className="btn btn-primary mt-4">Login</button>
             </fieldset>

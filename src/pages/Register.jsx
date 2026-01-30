@@ -31,11 +31,12 @@ const Register = () => {
     }
     registerUser(email, password)
       .then((res) => {
-        const currentUser = res.user;
-        updateProfile(currentUser, userInfo)
+        console.log(res.user);
+        
+        updateProfile(auth.currentUser, userInfo)
           .then(() => {
             setUser({...auth.currentUser });
-            console.log(currentUser);
+            
             alert("Registration Successful");
             navigate("/");
           })

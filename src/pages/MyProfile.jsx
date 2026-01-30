@@ -17,7 +17,7 @@ const MyProfile = () => {
   return (
     <>
       {user ? (
-        <div className="flex py-3 items-center justify-center flex-1 ">
+        <div className="flex py-3 items-center justify-center flex-1">
           <div className=" flex flex-col items-center justify-center gap-3 shadow-2xl p-5 md:p-10 rounded-3xl">
             <h2 className="font-medium text-md md:text-xl">
               Name: <span className="font-light"> {user.displayName}</span>
@@ -26,7 +26,7 @@ const MyProfile = () => {
               Email: <span className="font-light">{user.email}</span>{" "}
             </p>
             <div className="rounded-md w-32 h-32 overflow-hidden">
-              <img className="w-full h-full rounded-md object-cover" src={user.photoURL || userLogo } alt="User-Photo" />
+              <img className="w-full h-full rounded-md object-cover" src={user.photoURL || userLogo } alt="User-Photo" onError={e =>{e.target.src = userLogo}} />
             </div>
             <Link to="/update-profile" className="btn btn-primary">
               Update Profile
