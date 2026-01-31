@@ -7,6 +7,7 @@ import Register from "../pages/Register";
 import MyProfile from "../pages/MyProfile";
 import PrivateRoute from "../provider/PrivateRoute";
 import UpdateProfile from "../pages/UpdateProfile";
+import Plants from "../pages/Plants";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage></HomePage>,
-        loader: () => fetch("/plants.json"),
+        loader: () => fetch("/plants.json")
       },
       {
         path: "/my-profile",
@@ -23,7 +24,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/plants",
-        element: <p>Plants</p>
+        element: <Plants></Plants>,
+        loader: () => fetch("/plants.json")
       },
       {
         path: "/update-profile",
