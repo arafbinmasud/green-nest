@@ -4,7 +4,7 @@ const PlantCard = ({ plant }) => {
   const { plantName, image, category, price, rating, description } = plant;
 
   return (
-    <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
+    <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 border border-green-100 ">
       <figure className="px-4 pt-4 h-87.5">
         <img
           src={image}

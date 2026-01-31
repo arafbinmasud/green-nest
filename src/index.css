@@ -24,8 +24,16 @@ body {
   color: #1a1a1a; 
 }
 
+li a {
+  font-weight: 600;
+  color: #2D5A27 ;
+}
+
 a.active {
   text-decoration: underline;
+  color:#4CAF50 ;
+  
+  
 }
 
 

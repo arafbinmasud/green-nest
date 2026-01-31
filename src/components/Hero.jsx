@@ -11,7 +11,7 @@ import img4 from "../assets/tree4.webp";
 
 const Hero = () => {
   return (
-    <div className="w-11/12 mx-auto my-6 rounded-3xl overflow-hidden shadow-xl">
+    <div className="w-11/12 mx-auto my-10 rounded-3xl overflow-hidden shadow-xl">
       <Swiper
         navigation={true}
         pagination={true}

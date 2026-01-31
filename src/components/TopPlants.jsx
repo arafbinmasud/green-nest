@@ -6,8 +6,8 @@ const TopPlants = ({ plants }) => {
   console.log(plants);
 
   return (
-    <div className="w-11/12 mx-auto my-6">
-      <h2 className="font-bold text-2xl md:text-4xl text-center mb-5 text-primary">
+    <div className="w-11/12 mx-auto my-10">
+      <h2 className="font-bold text-2xl md:text-4xl text-center mb-4 text-primary">
         Top Rated Indoor Plants
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 ">
