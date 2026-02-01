@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import PlantCard from "./PlantCard";
 
 const TopPlants = ({ plants }) => {
-  console.log(plants);
+  
 
   return (
     <div className="w-11/12 mx-auto my-10">

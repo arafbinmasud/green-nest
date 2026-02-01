@@ -2,16 +2,15 @@ import { use } from "react";
 import { AuthContext } from "../provider/AuthContext";
 import { Link, useLocation } from "react-router";
 import userLogo from "../assets/user-logo.png"
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const MyProfile = () => {
   const { user, loading } = use(AuthContext);
   const location = useLocation();
-  console.log(location);
-
-  console.log(user);
+  
 
   if (loading) {
-    return <p>Loading..</p>;
+    return <LoadingSpinner></LoadingSpinner>;
   }
 
   return (

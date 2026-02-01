@@ -2,6 +2,8 @@ import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
 import userLogo from "../assets/user-logo.png";
+import { IoIosArrowDown } from "react-icons/io";
+import { toast } from "react-toastify";
 
 const links = (
   <>
@@ -18,12 +20,11 @@ const links = (
 );
 const Navbar = () => {
   const { user, logOutUser } = use(AuthContext);
-  console.log(user);
-
+  
   const handleSignOut = () => {
     logOutUser()
       .then(() => {
-        alert("Logout successful!");
+        toast.warn("Logout successful!");
       })
       .catch((err) => {
         console.log(err.message);
@@ -31,7 +32,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="z-10">
+    <header className="z-10 sticky top-0 shadow-md">
       <div className="navbar bg-base-100 shadow-sm">
         <div className="navbar-start">
           <div className="dropdown">
@@ -83,7 +84,7 @@ const Navbar = () => {
               </div>
               <div className="dropdown dropdown-end">
                 <div tabIndex={0} role="button" className="btn border-0  m-1">
-                  ⬇️
+                  <IoIosArrowDown></IoIosArrowDown>
                 </div>
                 <ul
                   tabIndex="-1"

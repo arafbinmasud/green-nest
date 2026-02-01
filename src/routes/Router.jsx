@@ -9,10 +9,12 @@ import PrivateRoute from "../provider/PrivateRoute";
 import UpdateProfile from "../pages/UpdateProfile";
 import Plants from "../pages/Plants";
 import PlantDetails from "../pages/PlantDetails";
+import ErrorPage from "../pages/ErrorPage";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         index: true,
@@ -34,7 +36,7 @@ const router = createBrowserRouter([
       }, 
       {
         path: "/plant-details/:id",
-        element: <PlantDetails></PlantDetails>,
+        element: <PrivateRoute><PlantDetails></PlantDetails></PrivateRoute>,
         loader: () => fetch("/plants.json")
       }
     ]

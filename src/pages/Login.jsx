@@ -2,6 +2,7 @@ import { use, useRef, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -17,10 +18,7 @@ const Login = () => {
     const password = e.target.password.value;
     setError("");
     loginUser(email, password)
-      .then((res) => {
-        const user = res.user;
-        console.log(user);
-      
+      .then(() => {
         navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((err) => {
@@ -30,13 +28,11 @@ const Login = () => {
 
   const handleGoogleLogin = () => {
     loginUserWithGoogle()
-      .then((res) => {
-        const user = res.user;
-        console.log(user);
+      .then(() => {
         navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((err) => {
-        err.message;
+        setError(err.message);
       });
   };
 
@@ -50,7 +46,7 @@ const Login = () => {
 
     resetPassword(email)
       .then(() => {
-        alert("Password reset email sent! Check your inbox.");
+        toast.success("Password reset email sent! Check your inbox.");
         //  Gmail redirect
         window.open("https://mail.google.com", "_blank");
       })

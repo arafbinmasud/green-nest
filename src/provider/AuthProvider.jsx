@@ -16,8 +16,6 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const googleProvider = new GoogleAuthProvider();
 
-  console.log(loading, user);
-
   const registerUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
@@ -29,6 +27,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const loginUserWithGoogle = () => {
+    setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
@@ -38,7 +37,7 @@ const AuthProvider = ({ children }) => {
 
   const resetPassword = (email) => {
     return sendPasswordResetEmail(auth, email);
-  }
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -58,7 +57,7 @@ const AuthProvider = ({ children }) => {
     loading,
     logOutUser,
     setUser,
-    resetPassword
+    resetPassword,
   };
 
   return <AuthContext value={authData}>{children}</AuthContext>;

@@ -7,7 +7,7 @@ const PlantDetails = () => {
   const { id } = useParams();
 
   const plant = allPlants.find((plant) => plant.plantId === Number(id));
-  console.log(plant);
+ 
 
   return (
     <section className="w-11/12 mx-auto my-10 grid grid-cols-1 md:grid-cols-3 gap-10">

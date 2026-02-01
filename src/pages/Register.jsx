@@ -1,9 +1,10 @@
-import React, { use, useState } from "react";
+import { use, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
 import { updateProfile } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,7 +19,7 @@ const Register = () => {
     const photo = e.target.photo.value;
     const password = e.target.password.value;
     const userInfo = { displayName: name, photoURL: photo };
-    console.log({ name, email, photo, password });
+
     setError("");
 
     const passwordValidation = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
@@ -29,15 +30,14 @@ const Register = () => {
       );
       return;
     }
+
     registerUser(email, password)
-      .then((res) => {
-        console.log(res.user);
-        
+      .then(() => {
         updateProfile(auth.currentUser, userInfo)
           .then(() => {
-            setUser({...auth.currentUser });
-            
-            alert("Registration Successful");
+            setUser({ ...auth.currentUser });
+
+            toast.success("Registration Successful");
             navigate("/");
           })
           .catch((err) => {
@@ -51,9 +51,7 @@ const Register = () => {
 
   const handleGoogleLogin = () => {
     loginUserWithGoogle()
-      .then((res) => {
-        const user = res.user;
-        console.log(user);
+      .then(() => {
         navigate("/");
       })
       .catch((err) => {
@@ -94,7 +92,6 @@ const Register = () => {
                 type="text"
                 className="input"
                 placeholder="PhotoURL"
-               
               />
 
               {/* Password  */}

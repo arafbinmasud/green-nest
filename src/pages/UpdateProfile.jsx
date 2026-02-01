@@ -14,7 +14,7 @@ const UpdateProfile = () => {
         const name = e.target.name.value;
         const photo = e.target.photo.value;
         const userInfo = {displayName: name, photoURL: photo};
-        console.log( user, userInfo);
+        
         updateProfile(auth.currentUser, userInfo)
         .then(()=>{
             setUser({...auth.currentUser});
