@@ -10,6 +10,7 @@ import UpdateProfile from "../pages/UpdateProfile";
 import Plants from "../pages/Plants";
 import PlantDetails from "../pages/PlantDetails";
 import ErrorPage from "../pages/ErrorPage";
+import LoadingSpinner from "../components/LoadingSpinner";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,7 +20,8 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage></HomePage>,
-        loader: () => fetch("/plants.json")
+        loader: () => fetch("/plants.json"),
+        hydrateFallbackElement: <LoadingSpinner></LoadingSpinner>
       },
       {
         path: "/my-profile",
@@ -28,7 +30,8 @@ const router = createBrowserRouter([
       {
         path: "/plants",
         element: <Plants></Plants>,
-        loader: () => fetch("/plants.json")
+        loader: () => fetch("/plants.json"),
+        hydrateFallbackElement: <LoadingSpinner></LoadingSpinner>
       },
       {
         path: "/update-profile",
@@ -37,7 +40,8 @@ const router = createBrowserRouter([
       {
         path: "/plant-details/:id",
         element: <PrivateRoute><PlantDetails></PlantDetails></PrivateRoute>,
-        loader: () => fetch("/plants.json")
+        loader: () => fetch("/plants.json"),
+        hydrateFallbackElement: <LoadingSpinner></LoadingSpinner>
       }
     ]
   },
