@@ -1,4 +1,7 @@
-import React from "react";
+
+import decoImg1 from "../assets/deco-1.webp";
+import decoImg2 from "../assets/deco-2.webp";
+
 
 const EcoDecor = () => {
   return (
@@ -16,7 +19,7 @@ const EcoDecor = () => {
         
         <div className="md:col-span-7 h-75 md:h-full relative overflow-hidden rounded-3xl">
           <img
-            src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?q=80&w=687&auto=format&fit=crop"
+            src={decoImg1}
             className="w-full h-full object-cover"
             alt="Living Room"
           />
@@ -43,9 +46,9 @@ const EcoDecor = () => {
 
           <div className="flex-1 relative overflow-hidden rounded-3xl">
             <img
-              src="https://plus.unsplash.com/premium_photo-1722170080321-8fd99702432d?q=80&w=1110&auto=format&fit=crop"
+              src={decoImg2}
               className="w-full h-full object-cover absolute inset-0"
-              alt="Workspace"
+              alt="Workspace" 
             />
             <div className="absolute inset-0 bg-green-900/40 flex items-center justify-center">
               <p className="text-white font-bold text-lg">
