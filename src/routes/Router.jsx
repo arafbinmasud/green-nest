@@ -8,6 +8,7 @@ import MyProfile from "../pages/MyProfile";
 import PrivateRoute from "../provider/PrivateRoute";
 import UpdateProfile from "../pages/UpdateProfile";
 import Plants from "../pages/Plants";
+import PlantDetails from "../pages/PlantDetails";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,8 +31,13 @@ const router = createBrowserRouter([
       {
         path: "/update-profile",
         element: <PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
+      }, 
+      {
+        path: "/plant-details/:id",
+        element: <PlantDetails></PlantDetails>,
+        loader: () => fetch("/plants.json")
       }
-    ],
+    ]
   },
   {
     path: "/auth",

@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 
 const PlantCard = ({ plant }) => {
-  const { plantName, image, category, price, rating, description } = plant;
+  const {plantId, plantName, image, category, price, rating, description } = plant;
 
   return (
     <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 border border-green-100 ">
@@ -23,7 +23,7 @@ const PlantCard = ({ plant }) => {
           <div className="badge badge-outline badge-ghost">{category}</div>
         </div>
         <div className="card-actions mt-4">
-          <Link className="btn btn-primary btn-outline btn-block">
+          <Link to={`/plant-details/${plantId}`} className="btn btn-primary btn-outline btn-block">
             View Details
           </Link>
         </div>
